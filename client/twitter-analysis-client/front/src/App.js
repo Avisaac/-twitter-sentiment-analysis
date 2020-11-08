@@ -179,7 +179,8 @@ class App extends Component {
             Filter
           </button> */}
           <div className="filtering">
-            {this.state.filter.value ? `Filtering by ${this.state.filter.type.replace('fullName', 'City')}: ${this.state.filter.value.replace('__', ' - ')}` : null}
+            {this.state.filter.value ? `Filtering by ${this.state.filter.type.replace('fullName', 'City')}: ${this.state.filter.value.replace('__', ' - ')}` : null} 
+            {this.state.filter.value ? <span className="reset" onClick={() => this.setState({filter: {type: null, value: null}})}>Reset</span> : null} 
           </div>
         </div>
 

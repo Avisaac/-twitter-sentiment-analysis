@@ -100,7 +100,6 @@ class App extends Component {
   }
 
   setCountry(e) {
-    console.log(e.target.value)
     this.setState({
       filter: {
         type: "country",
@@ -110,7 +109,7 @@ class App extends Component {
   }
 
   setStartDate(date) {
-    console.log(date);
+    // console.log(date);
     this.setState({
       startDate: date,
       filter: {
@@ -121,7 +120,7 @@ class App extends Component {
   }
 
   setEndDate(date) {
-    console.log(date);
+    // console.log(date);
     this.setState({
       endDate: date,
       filter: {
@@ -129,10 +128,6 @@ class App extends Component {
         value: null,
       },
     });
-  }
-
-  orderData = (orderBy) => {
-
   }
 
   render() {
@@ -149,12 +144,14 @@ class App extends Component {
               type="text"
               placeholder="country"
               onChange={(e) => this.setCountry(e)}
-            ></input>
+              onBlur={(e) => e.target.value = null}
+              ></input>
             <input
               type="text"
               placeholder="city"
               onChange={(e) => this.setCity(e)}
-            ></input>
+              onBlur={(e) => e.target.value = null}
+              ></input>
           </div>
           <div className="datepickers">
             <DatePicker
@@ -165,6 +162,7 @@ class App extends Component {
               endDate={this.state.endDate}
               dateFormat="dd/MM/yyyy"
               placeholderText="Start date"
+              isClearable
             />
             <DatePicker
               selected={this.state.endDate}
@@ -174,13 +172,14 @@ class App extends Component {
               endDate={this.state.endDate}
               dateFormat="dd/MM/yyyy"
               placeholderText="End date"
+              isClearable
             />
           </div>
           {/* <button className="filter-button" onClick={() => this.filter()}>
             Filter
           </button> */}
           <div className="filtering">
-            {this.state.filter.value ? `Filtering by ${this.state.filter.type}: ${this.state.filter.value.replace('__', ' - ')}` : null}
+            {this.state.filter.value ? `Filtering by ${this.state.filter.type.replace('fullName', 'City')}: ${this.state.filter.value.replace('__', ' - ')}` : null}
           </div>
         </div>
 
